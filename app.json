@@ -3,8 +3,23 @@
     "name": "LAB-03",
     "slug": "LAB-03",
     "version": "1.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "android": {
+      "package": "com.lab03",
+      "googleServicesFile": "./config/google/google-services.json"
+    },
+    "ios": {
+      "bundleIdentifier": "com.lab03",
+      "googleServicesFile": "./config/google/GoogleService-Info.plist"
+    },
+    "plugins": [
+      "@react-native-firebase/app"
     ]
   }
 }
