@@ -1,31 +1,29 @@
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { NavigationContainer } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
-import { Loading } from '../components/Loading';
-import { SignIn } from '../screens/SignIn';
-import { AppRoutes } from './app.routes';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
+import { NavigationContainer } from '@react-navigation/native'
+import { useEffect, useState } from 'react'
+import { Loading } from '../components/Loading'
+import { SignIn } from '../screens/SignIn'
+import { AppRoutes } from './app.routes'
 
-
-export function Routes(){
+export function Routes() {
   const [isLoading, setIsLoading] = useState(true)
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>();
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>()
 
   useEffect(() => {
-    const subscribe = auth()
-      .onAuthStateChanged(response => {
-        setUser(response);
-        setIsLoading(false);
-      });
+    const subscribe = auth().onAuthStateChanged((response) => {
+      setUser(response)
+      setIsLoading(false)
+    })
     return subscribe
-  },[])
+  }, [])
 
-  if(isLoading) {
-      return <Loading />
+  if (isLoading) {
+    return <Loading />
   }
 
   return (
     <NavigationContainer>
-      {user ? <AppRoutes/> : <SignIn/>}
+      {user ? <AppRoutes /> : <SignIn />}
     </NavigationContainer>
   )
 }
