@@ -11,10 +11,9 @@ export function Register() {
   const [isLoading, setIsLoading] = useState(false)
   const [patrimony, setPatrimony] = useState('')
   const [description, setDescription] = useState('')
-
   const navigation = useNavigation()
 
-  function HandleNewOrderRegister() {
+  async function HandleNewOrderRegister() {
     if (!patrimony || !description) {
       return Alert.alert('Registrar', 'Preencha todos campos ')
     }
